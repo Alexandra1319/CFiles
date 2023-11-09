@@ -4,7 +4,7 @@
 int main()
 {
     int a,b;
-    a=5;
+    a=55;
     b=76;
     int sum;
     sum=a+b;
