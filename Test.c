@@ -5,7 +5,7 @@ int main()
 {
     int a,b;
     a=5;
-    b=6;
+    b=76;
     int sum;
     sum=a+b;
     double mo;
