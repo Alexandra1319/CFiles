@@ -2,7 +2,7 @@
 MATHIMA: DOMHMENOS PROGRAMMATISMOS
 TMHMA: T10
 ERGASTHRIAKH ASKHSH: 5
-HMEROMHNIA: 9/11/2023
+HMEROMHNIA:13/11/2023
 ONOMA: Mourouzidou Alexandra
 ARITHMOS MHTRWOY: 2023095
 */
@@ -17,12 +17,12 @@ int main(int argc, char *argv[])
 
       int num;
 
-      printf("Give a number between 2 and 10:\t");
+      printf("Give a number between 2 and 10: ");
       scanf("%d", &num);
 
       while (num < 2 || num > 10)
       {
-            printf("Give a number between 2 and 10:\t");
+            printf("Give a number between 2 and 10: ");
             scanf("%d", &num);
       }
 
@@ -37,12 +37,12 @@ int main(int argc, char *argv[])
             dynamh = pow(num, i);
       }
 
-      printf("Give a number between 2 and 10:\t"); // 5.1.b
+      printf("Give a number between 2 and 10: "); // 5.1.b
       scanf("%d", &num);
 
       while (num < 2 || num > 10)
       {
-            printf("Give a number between 2 and 10:\t");
+            printf("Give a number between 2 and 10: ");
             scanf("%d", &num);
       }
 
@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
 
       do
       {
-            printf("Give a number between 2 and 10:\t");
+            printf("Give a number between 2 and 10: ");
             scanf("%d", &num);
       }
       while (num < 2 || num > 10);
@@ -89,7 +89,7 @@ int main(int argc, char *argv[])
       {
             plaith = plaith + 1;
 
-            printf("Give an integer number :\t");
+            printf("Give an integer number : ");
             scanf("%d", &xoritikotita);
             sumthes = sumthes + xoritikotita;
 
@@ -126,7 +126,7 @@ int main(int argc, char *argv[])
 
       do
       {
-            printf("Give an integer number:\t");
+            printf("Give an integer number: ");
             scanf("%d", &a);
 
             if (a % 2 == 0)
@@ -149,7 +149,7 @@ int main(int argc, char *argv[])
 
       // askhsh 5.5
 
-      int a, b, p;
+      int b, p;
 
       printf("Give two numbers a and b : ");
       scanf("%d %d", &a, &b);
