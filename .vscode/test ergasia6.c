@@ -21,7 +21,7 @@ int main(int argc, char argv[])
     //tropos b with for
     
 
- /*   for (; i<1 || i>10;)
+    for (; i<1 || i>10;)
     {
          printf("Give an integer in [1,10]: ");  //no clue how to do it send help
          scanf("%d",&i);   
@@ -30,7 +30,7 @@ int main(int argc, char argv[])
     for (int j=1; j<=10; j++)
     {
         printf("%d * %d = %d\n",i,j,i*j);
-    } */
+    } 
 
     //askhsh 6.2
 
