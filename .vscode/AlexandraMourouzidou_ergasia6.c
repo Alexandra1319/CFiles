@@ -2,7 +2,7 @@
 MATHIMA: DOMHMENOS PROGRAMMATISMOS
 TMHMA: T10
 ERGASTHRIAKH ASKHSH: 6
-HMEROMHNIA: 18/11/2023
+HMEROMHNIA: 21/11/2023
 ONOMA: Mourouzidou Alexandra
 ARITHMOS MHTRWOY: 2023095
 */
@@ -10,6 +10,10 @@ ARITHMOS MHTRWOY: 2023095
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+
+int findAthroismaPeritton(int ,int );
+int findParagontiko(int );
+bool isProtos(int );
 
 int main(int argc, char *argv[])
 {
@@ -208,7 +212,7 @@ int findParagontiko(int n) //sinartisi ask 6.5
     return npar;
 }
 
-int isProtos(int n) //sinartisi ask 6.6
+bool isProtos(int n) //sinartisi ask 6.6
 {
     bool protos=true;
 
