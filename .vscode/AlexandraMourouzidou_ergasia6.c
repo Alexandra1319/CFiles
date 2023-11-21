@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
         sum=sum+i;
 
        if (i==2*n-1) 
-            printf("(2*%d-1)=%d=%d^2=%d\n",n,sum,n,n*n); //%d=%d=%d*%d=%d\n",i,sum,n,n,n*n
+            printf("(2*%d-1)=%d=%d^2=%d\n",n,sum,n,n*n);
        else
             printf("%d+",i);
     }
@@ -154,7 +154,7 @@ int main(int argc, char *argv[])
         {
             sum=findAthroismaPeritton(sum,i);
             if (i==2*n-1)
-                    printf("(2*%d-1)=%d=%d^2=%d\n",n,sum,n,n*n); //aidfunhiounuf
+                    printf("(2*%d-1)=%d=%d^2=%d\n",n,sum,n,n*n);
             else
                     printf("%d+",i);
         }
