@@ -7,7 +7,6 @@ ONOMA : Mourouzidou Alexandra
 ARITHMOS MHTRWOY : 2023095
 */
 
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -44,7 +43,7 @@ int main(int argc, char *argv[])
     int plithos;
     plithos=countAvg(P,n);
 
-    printf("avg = %d",plithos);
+    printf("count avg = %d",plithos);
 
   system("PAUSE");	
   return 0;
@@ -106,10 +105,11 @@ int findThesiMax(int P[],int n) //vriskw thesh max
     return thmax;
 }
 
-countAvg(int P[],int n)
+int countAvg(int P[],int n) //vriskw plithos P[] > mo
 {
     int sum=0,pl=0;
     double mo;
+
     for (int i=0;i<n;i++)
     {
         sum=sum+P[i];
@@ -122,4 +122,6 @@ countAvg(int P[],int n)
         if (P[i]>mo)
             pl++;
     }
+
+    return pl;
 }
