@@ -9,12 +9,14 @@ ARITHMOS MHTRWOY : 2023095
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 void fillPin(int [],int );
 void showPin(int [],int );
 int findThesiMax(int [],int );
 int findThesiMin(int [],int );
 int countAvg(int [],int );
+void searchPThesiNum(int [],int ,int);
 
 int main(int argc, char *argv[])
 {
@@ -23,7 +25,7 @@ int main(int argc, char *argv[])
     int n;
     
     do{
-        printf("Give an integer n > 5 :");
+        printf("Give an integer n > 5 : ");
         scanf("%d",&n);
     }while (n<=5);
     
@@ -37,13 +39,23 @@ int main(int argc, char *argv[])
     thmin=findThesiMin(P,n);
     thmax=findThesiMax(P,n);
     
-    printf("\nMax = %d ThesiMax = %d\n",P[thmax],thmax);
-    printf("Min = %d ThesiMin = %d\n",P[thmin],thmin);
+    printf("max = %d thesiMax = %d\n",P[thmax],thmax);
+    printf("min = %d thesiMin = %d\n",P[thmin],thmin);
     
     int plithos;
     plithos=countAvg(P,n);
 
-    printf("count avg = %d",plithos);
+    printf("count avg = %d\n",plithos);
+
+    int num;
+
+    printf("Give an integer num: ");
+    scanf("%d",&num);
+
+    searchPThesiNum(P,n,num);
+
+
+
 
   system("PAUSE");	
   return 0;
@@ -65,7 +77,7 @@ void showPin(int P[],int n) //emfanizw stoixia pinaka
         if (i==n-1)
             printf(" %d\n",P[i]);
         else if (i==0)
-            printf("P = %d",P[i]);
+            printf("p = %d",P[i]);
         else 
             printf(" %d",P[i]);
     }
@@ -115,7 +127,8 @@ int countAvg(int P[],int n) //vriskw plithos P[] > mo
         sum=sum+P[i];
     }
 
-    mo=sum/n;
+    mo=(double)sum/n;
+    printf("avg = %lf\n",mo);
 
     for (int i=0;i<n;i++)
     {
@@ -124,4 +137,26 @@ int countAvg(int P[],int n) //vriskw plithos P[] > mo
     }
 
     return pl;
+}
+
+void searchPThesiNum(int P[],int n,int num)
+{
+    bool done=false;
+    int pos=0,i=1;
+
+    while (done==false && i<n)
+    {
+        if (P[i]==num)
+        {
+            done=true;
+            pos=i;
+        }
+        else
+            i++;
+    }
+
+    if (done)
+        printf("Found num = %d in position %d, P[%d] = %d\n",num,i,i,num);
+    else
+        printf("NOT FOUND\n");
 }
