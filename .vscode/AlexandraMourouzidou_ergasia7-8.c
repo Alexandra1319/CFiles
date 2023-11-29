@@ -2,7 +2,7 @@
 MATHIMA : DOMHMENOS PROGRAMMATISMOS
 TMHMA : T10
 ERGASTHRIAKH ASKHSH : 7-8
-HMEROMHNIA : 22/11/2023
+HMEROMHNIA : 29/11/2023
 ONOMA : Mourouzidou Alexandra
 ARITHMOS MHTRWOY : 2023095
 */
@@ -15,14 +15,17 @@ void fillPin(int [],int );
 void showPin(int [],int );
 int findThesiMax(int [],int );
 int findThesiMin(int [],int );
-int countAvg(int [],int );
-void searchPThesiNum(int [],int ,int);
+int countAvg(int [],int ,double* );
+int searchPThesiNum(int [],int ,int );
+void bubbleDesc(int [],int );
+int binarysearchPThesiNum(int [],int ,int ,int ,int );
+void swapPin(int [],int ,int ,int );
 
 int main(int argc, char *argv[])
 {
     //askhsh 1
     
-    int n;
+    int n; //diavasma timhs n>5
     
     do{
         printf("Give an integer n > 5 : ");
@@ -31,36 +34,64 @@ int main(int argc, char *argv[])
     
     int P[n];
     
-    fillPin(P,n);
-    showPin(P,n);
+    fillPin(P,n); //gemisma pinaka P me sinartisi
+    showPin(P,n); //emfanisi pinaka P me sinartisi
     
-    int thmin,thmax;
-    
+    int thmin,thmax; //thesi min,max kai oi times tous 
+                     //mesw sinartisewn
     thmin=findThesiMin(P,n);
     thmax=findThesiMax(P,n);
     
     printf("max = %d thesiMax = %d\n",P[thmax],thmax);
     printf("min = %d thesiMin = %d\n",P[thmin],thmin);
     
-    int plithos;
-    plithos=countAvg(P,n);
+    int plithos; //plithos P[]>mo mesw sinartisis kai avg dhladh mo 
+    double mo;   //giati yparxei sthn endiktiki ejodo programmatos
+    plithos=countAvg(P,n,&mo);
 
     printf("count avg = %d\n",plithos);
+    printf("avg = %lf\n",mo);
 
-    int num;
+    int num; //anazitisi arithmou num me sinartisi
 
     printf("Give an integer num: ");
     scanf("%d",&num);
 
-    searchPThesiNum(P,n,num);
+    int pos=searchPThesiNum(P,n,num);
 
+    if (pos!=0)
+        printf("Found num = %d in position %d, P[%d] = %d\n",num,pos,pos,num);
+    else
+        printf("NOT FOUND\n");
 
+    //bubble sort
+    bubbleDesc(P,n);
+    showPin(P,n);
 
+    //diadiki anazhthsh
+    printf("Give an integer num: ");
+    scanf("%d",&num);
+
+    int thnum;
+    thnum=binarysearchPThesiNum(P,n,num,0,n-1);
+
+    if (thnum==-1)
+        printf("NOT FOUND\n");
+    else    
+        printf("Found num = %d in position %d, P[%d] = %d\n",num,thnum,thnum,num);
+
+    //dhmourgia index
+    int index;
+    index=rand()%(n-2-0+1)+0;
+
+    swapPin(P,n,index,index+1);
+    showPin(P,n);
 
   system("PAUSE");	
   return 0;
 }
-    //functions
+
+                //functions//
     
 void fillPin(int P[],int n) //gemizw pinaka
 {
@@ -86,7 +117,7 @@ void showPin(int P[],int n) //emfanizw stoixia pinaka
 int findThesiMin(int P[],int n) //vriskw thesh min
 {
     int min=P[0];
-    int thmin;
+    int thmin=0;
     
     for (int i=1;i<n;i++)
     {
@@ -103,7 +134,7 @@ int findThesiMin(int P[],int n) //vriskw thesh min
 int findThesiMax(int P[],int n) //vriskw thesh max
 {
     int max=P[0];
-    int thmax;
+    int thmax=0;
     
     for (int i=1;i<n;i++)
     {
@@ -117,9 +148,9 @@ int findThesiMax(int P[],int n) //vriskw thesh max
     return thmax;
 }
 
-int countAvg(int P[],int n) //vriskw plithos P[] > mo
-{
-    int sum=0,pl=0;
+int countAvg(int P[],int n,double *mo2) //vriskw plithos P[] > mo 
+{                          
+    int sum=0,pl=0;         
     double mo;
 
     for (int i=0;i<n;i++)
@@ -128,7 +159,7 @@ int countAvg(int P[],int n) //vriskw plithos P[] > mo
     }
 
     mo=(double)sum/n;
-    printf("avg = %lf\n",mo);
+    *mo2 = mo;
 
     for (int i=0;i<n;i++)
     {
@@ -139,15 +170,15 @@ int countAvg(int P[],int n) //vriskw plithos P[] > mo
     return pl;
 }
 
-void searchPThesiNum(int P[],int n,int num)
+int searchPThesiNum(int P[],int n,int num) //vriskw thesh num
 {
-    bool done=false;
     int pos=0,i=1;
+    bool done=false;
 
     while (done==false && i<n)
     {
         if (P[i]==num)
-        {
+        {   
             done=true;
             pos=i;
         }
@@ -155,8 +186,50 @@ void searchPThesiNum(int P[],int n,int num)
             i++;
     }
 
-    if (done)
-        printf("Found num = %d in position %d, P[%d] = %d\n",num,i,i,num);
-    else
-        printf("NOT FOUND\n");
+    return pos;
+}
+
+void bubbleDesc(int P[],int n) //bubble sort
+{
+    int temp,i,j;
+    
+    for (i=0;i<n-1;i++)
+    {
+        for (j=0;j<n-1;j++)
+        {
+            if (P[j]<P[j+1])
+            {
+                temp=P[j];
+                P[j]=P[j+1];
+                P[j+1]=temp;
+            }
+        }
+    }
+}
+
+//diadiki anazhthsh
+int binarysearchPThesiNum(int P[],int n,int num,int st,int fin)
+{
+    int thnum=-1,mid;
+
+    while (st<=fin && thnum==-1)
+    {
+        mid=(st+fin)/2;
+        
+        if (P[mid]==num)
+            thnum=mid;
+        else if (P[mid]>num)
+            st=mid+1;
+        else    
+            fin=mid-1;
+    }
+  
+    return thnum;
+}
+
+void swapPin(int P[],int n,int index,int index1)
+{
+    int temp=P[index];
+    P[index]=P[index1];
+    P[index1]=temp;
 }
