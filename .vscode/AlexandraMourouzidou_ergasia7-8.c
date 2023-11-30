@@ -2,7 +2,7 @@
 MATHIMA : DOMHMENOS PROGRAMMATISMOS
 TMHMA : T10
 ERGASTHRIAKH ASKHSH : 7-8
-HMEROMHNIA : 29/11/2023
+HMEROMHNIA : 30/11/2023
 ONOMA : Mourouzidou Alexandra
 ARITHMOS MHTRWOY : 2023095
 */
@@ -84,8 +84,8 @@ int main(int argc, char *argv[])
     int index;
     index=rand()%(n-2-0+1)+0;
 
-    swapPin(P,n,index,index+1);
-    showPin(P,n);
+    swapPin(P,n,index,index+1); //antallagh index kai index+1 mesw sinartisis
+    showPin(P,n);               //kai emfanisi pinaka
 
   system("PAUSE");	
   return 0;
@@ -227,6 +227,7 @@ int binarysearchPThesiNum(int P[],int n,int num,int st,int fin)
     return thnum;
 }
 
+//antallagh index kai index+1
 void swapPin(int P[],int n,int index,int index1)
 {
     int temp=P[index];
