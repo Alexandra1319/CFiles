@@ -8,10 +8,12 @@ ARITHMOS MHTRWOY: 2023095
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 int n;
-void fillPin2D(int [][],int );
-void showPin2D(int [][],int );
+void fillPin2D(int [][n],int );
+void showPin2D(int [][n],int );
+void findMeanLine(int [][n],int ,double []);
 
 int main(int argc, char *argv[])
 {
@@ -29,7 +31,8 @@ int main(int argc, char *argv[])
 
     showPin2D(my2DArray,n); //emfanisi pinaka me sinartisi
     
-    
+    double avgLine[n];
+    findMeanLine(my2DArray,n,avgLine); //emfanisi max me sinartisi
   
   system("PAUSE");	
   return 0;
@@ -39,6 +42,8 @@ int main(int argc, char *argv[])
 void fillPin2D(int my2DArray[][n],int n) //gemizw pinaka
 {  
     int i,j;
+    srand(time(NULL));
+    
     for (i=0;i<n;i++)
     {
         for (j=0;j<n;j++)
@@ -54,10 +59,25 @@ void showPin2D
     {
         for (j=0;j<n;j++)
         {    if (i==0 && j==0)
-                printf("p = %d",my2DArray[i][j]);
+                printf("p = \n%d ",my2DArray[i][j]);
             else
                 printf("%d ",my2DArray[i][j]);
         }
         printf("\n");
     }
+}
+
+void findMeanLine(int my2DArray[][n],int n,double avgLine[])
+{
+    int i,j,sumi;
+    
+    for (i=0;i<n;i++)
+    {  
+        sumi=0;
+        for (j=0;j<n;j++)
+            sumi=sumi+my2DArray[i][j];
+        avgLine[i]=(double)sumi/n;
+    }
+    
+
 }
