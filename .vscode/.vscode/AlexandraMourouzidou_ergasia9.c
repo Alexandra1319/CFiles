@@ -16,6 +16,7 @@ void showPin2D(int [][n],int );
 void findMeanLine(int [][n],int ,double []);
 void showPinDouble1D(double [],int );
 void findMeanCol(int [][n],int ,double []);
+int findDSum(int [][n],int );
 
 int main(int argc, char *argv[])
 {
@@ -44,6 +45,10 @@ int main(int argc, char *argv[])
 
     showPinDouble1D(avgCol,n); //emfanisi pinaka max kata stili
 
+    int sum=findDSum(my2DArray,n); //ypologismos sum diagwniwn
+
+    printf("\nsum1D + sum2D = %d\n",sum); //emfanisi sum diagwniwn
+
   system("PAUSE");	
   return 0;
 }
@@ -64,13 +69,13 @@ void fillPin2D(int my2DArray[][n],int n) //gemizw pinaka
 void showPin2D(int my2DArray[][n],int n) //emfanizw stoixia pinaka
 {
     int i,j;
-     for (i=0;i<n;i++)
+
+    printf("p = \n");
+    for (i=0;i<n;i++)
     {
         for (j=0;j<n;j++)
-        {    if (i==0 && j==0)
-                printf("p = \n%d ",my2DArray[i][j]);
-            else
-                printf("%d ",my2DArray[i][j]);
+        {    
+            printf("%d ",my2DArray[i][j]);
         }
         printf("\n");
     }
@@ -95,7 +100,7 @@ void showPinDouble1D(double avg[],int n) //emfanizw max greammhs/stilis
     for (i=0;i<n;i++)
     {
         if (i==0)
-            printf("\navgLine = %.2lf ",avg[i]);
+            printf("\navgLine/avgCol = %.2lf ",avg[i]);
         else if (i==n-1)
             printf("%.2lf\n",avg[i]);
         else
@@ -114,4 +119,19 @@ void findMeanCol(int my2DArray[][n],int n,double  avgCol[]) //vriskw max stilis
             sumj=sumj+my2DArray[i][j];
         avgCol[j]=(double)sumj/n;
     }
+}
+
+int findDSum(int my2DArray[][n],int n) //vriskw sum diagwniwn
+{
+    int i,j,s1=0,s2=0,s;
+
+    for (i=0;i<n;i++)
+    {
+        s1=s1+my2DArray[i][i];
+
+        s2=s2+my2DArray[i][n-i-1];
+    }
+    s=s1+s2;
+
+    return s;
 }
