@@ -1,16 +1,15 @@
 /*MATHIMA: DOMHMENOSPROGRAMMATISMOS
 TMHMA: T10
 ERGASTHRIAKH ASKHSH: 9
-HMEROMHNIA: 8/12/2023
+HMEROMHNIA: 12/12/2023
 ONOMA: Mourouzidou Alexandra
 ARITHMOS MHTRWOY: 2023095
 */
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
-int n;
+int n=0;
 void fillPin2D(int [][n],int );
 void showPin2D(int [][n],int );
 void findMeanLine(int [][n],int ,double []);
@@ -22,10 +21,7 @@ int main(int argc, char *argv[])
 {
     //askhsh 1
     
-    srand(time(NULL));
-    int n; //diavasma timhs n>5
-    
-    do{
+    do{   //diavasma timhs n>5
         printf("Give an integer n > 5 : ");
         scanf("%d",&n);
     }while (n<=5);
@@ -75,7 +71,7 @@ void showPin2D(int my2DArray[][n],int n) //emfanizw stoixia pinaka
     {
         for (j=0;j<n;j++)
         {    
-            printf("%d ",my2DArray[i][j]);
+            printf("%2d ",my2DArray[i][j]);
         }
         printf("\n");
     }
