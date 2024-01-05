@@ -18,7 +18,7 @@ struct ypallhlos //dilwsh domhs enos ypallhlou
     int ptyxio;
     int yperories;
     double basikosMisthos;
-    double tΜ;
+    double tM;
 };
 
 //gemizw pedia domhs ypallhlou parametrika
@@ -48,7 +48,7 @@ void setTΜAll(struct ypallhlos [], int );
 
 int main(int argc, char *argv[])
 {
-    //askhsh 10.1
+            //askhsh 10.1
 
     struct ypallhlos yp1,yp2;
 
@@ -141,6 +141,12 @@ int main(int argc, char *argv[])
 
      setTΜAll(yp,n);
 
+    //emfanish pediwn yp[n]
+    emfanishPedion(yp);
+    for ( i=0; i<n ; i++)
+    {
+        printf("telikosMisthos = %lf\n", yp[i].tM);
+    }
 
 
 
@@ -152,11 +158,11 @@ int main(int argc, char *argv[])
 // Emfanish pediwn domhs ypallhlou
 void emfanishPedion(struct ypallhlos yp)
 {
-    printf("name: %s\n", yp.name);
-    printf("AM: %d\n", yp.aM);
-    printf("Ptyxio: %d\n", yp.ptyxio);
-    printf("Yperories: %d\n", yp.yperories);
-    printf("Vasikos misthos: %.2lf\n", yp.basikosMisthos);
+    printf("name : %s\n", yp.name);
+    printf("AM = %d\n", yp.aM);
+    printf("Ptyxio = %d\n", yp.ptyxio);
+    printf("Yperories = %d\n", yp.yperories);
+    printf("Vasikos misthos = %.2lf\n", yp.basikosMisthos);
 }
 
 void findTMisthos(struct ypallhlos yp) //ypologizw kai emfanizw teliko mistho
