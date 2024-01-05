@@ -10,6 +10,7 @@ ARITHMOS MHTRWOY: 2023095
 #include <stdlib.h>
 #include <string.h>
 
+    //askhsh 10.1
 struct ypallhlos //dilwsh domhs enos ypallhlou 
 {
     char name[50];
@@ -17,6 +18,7 @@ struct ypallhlos //dilwsh domhs enos ypallhlou
     int ptyxio;
     int yperories;
     double basikosMisthos;
+    double tΜ;
 };
 
 //gemizw pedia domhs ypallhlou parametrika
@@ -36,6 +38,13 @@ void findTMisthos(struct ypallhlos );
 double returnTMisthos(struct ypallhlos ); 
 void findMaxTΜ(struct ypallhlos , struct ypallhlos );
 void swapYp1Yp2(struct ypallhlos *, struct ypallhlos *);
+
+    //asakhsh 10.2
+
+int n;
+void setTΜAll(struct ypallhlos [], int );
+
+
 
 int main(int argc, char *argv[])
 {
@@ -101,11 +110,45 @@ int main(int argc, char *argv[])
     printf("ypallhlos yp2 after call swapYp1Yp2() :\n");
     emfanishPedion(yp2);
 
+
+            //askhsh 10.2
+
+    //diavasma timhs n>=50
+    do{
+        printf("Give n <= 50 : ");
+        scanf("%d",&n);
+    }while (n>50);
+
+    //eisagwgh timwn ston pinaka yp[n] apto plhktrologio
+    struct ypallhlos yp[n];
+
+    int i;
+    for ( i=0; i<n; i++ )
+    {
+        printf("Give name of ypallhlos yp[%d] : ",i);
+        scanf("%s",name2);
+        printf("Give aM of ypallhlos yp[%d] : ",i);
+        scanf("%d",&aM2);
+        printf("Give ptyxio of ypallhlos yp[%d] : ",i);
+        scanf("%d",&ptyxio2);
+        printf("Give yperories of ypallhlos yp[%d] : ",i);
+        scanf("%d",&yperories2);
+        printf("Give basikosMisthos of ypallhlos yp[%d] : ",i);
+        scanf("%lf",&basikosMisthos2);
+
+        yp[i] = gemismaPedion(name2, aM2, ptyxio2, yperories2, basikosMisthos2);
+    }
+
+     setTΜAll(yp,n);
+
+
+
+
     system("PAUSE");	
     return 0;
 }
                 //////////functions//////////
-
+            //askhsh 10.1
 // Emfanish pediwn domhs ypallhlou
 void emfanishPedion(struct ypallhlos yp)
 {
@@ -186,4 +229,16 @@ void swapYp1Yp2(struct ypallhlos *yp1, struct ypallhlos *yp2) //antalassw times 
     yp3 = *yp1;
     *yp1 = *yp2;
     *yp2 = yp3;
+}
+
+            //askhsh 10.2
+
+void setTΜAll(struct ypallhlos yp[], int n)
+{
+    int i;
+    for ( i=0; i<n; i++ )
+    {
+        yp[i].tM = returnTMisthos(yp[i]);
+    }
+
 }
