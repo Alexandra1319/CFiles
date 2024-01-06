@@ -142,7 +142,6 @@ int main(int argc, char *argv[])
      setTΜAll(yp,n);
 
     //emfanish pediwn yp[n]
-    
     for ( i=0; i<n; i++ )
     {
         printf("ypallhlos yp[%d] :\n",i);
@@ -152,7 +151,8 @@ int main(int argc, char *argv[])
 
     int index = rand()% n-1; //kanonika einai (n-2 -0 +1) +0 apla to ekana kateftheian
 
-    printf("Pinakas after Swap yp[%d] <--> yp[%d]\n",index,index+1); //swap & emfanish yp[index],yp[index+1] me sinartish
+     //swap kai emfanish yp[index], yp[index+1] me sinartish
+    printf("Pinakas after Swap yp[%d] <--> yp[%d]\n",index,index+1);
     swapYpiYpi1(yp,index,index+1);
 
     for ( i=0; i<n; i++ )
@@ -162,7 +162,8 @@ int main(int argc, char *argv[])
         printf("Telikos Misthos = %lf\n",yp[i].tM);
     }
 
-    int thmax = returnThesiMaxTM(yp,n); //evresh kia emfanish thesi ypallhlou me max tM
+    //evresh kai emfanish thesi ypallhlou me max tM
+    int thmax = returnThesiMaxTM(yp,n);
     printf("Pedia ypallhlou yp[%d] me maxTM :\n",thmax);
     emfanishPedion(yp[thmax]);
     printf("Telikos Misthos = %lf\n",yp[thmax].tM);
@@ -170,10 +171,11 @@ int main(int argc, char *argv[])
     system("PAUSE");	
     return 0;
 }
-                //////////functions//////////
+                            //////////functions//////////
+
             //askhsh 10.1
-// Emfanish pediwn domhs ypallhlou
-void emfanishPedion(struct ypallhlos yp)
+
+void emfanishPedion(struct ypallhlos yp) // Emfanish pediwn domhs ypallhlou
 {
     printf("name : %s\n", yp.name);
     printf("aM = %d\n", yp.aM);
