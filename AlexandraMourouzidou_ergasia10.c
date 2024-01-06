@@ -1,7 +1,7 @@
 /*MATHIMA: DOMHMENOSPROGRAMMATISMOS
 TMHMA: T10
 ERGASTHRIAKH ASKHSH: 10
-HMEROMHNIA: 4/1/2024
+HMEROMHNIA: 6/1/2024
 ONOMA: Mourouzidou Alexandra
 ARITHMOS MHTRWOY: 2023095
 */
@@ -33,7 +33,7 @@ struct ypallhlos gemismaPedion(char name[], int aM, int ptyxio, int yperories, d
     return yp;
 }
 
-void emfanishPedion (struct ypallhlos );
+void emfanishPedion(struct ypallhlos );
 void findTMisthos(struct ypallhlos );
 double returnTMisthos(struct ypallhlos ); 
 void findMaxTΜ(struct ypallhlos , struct ypallhlos );
@@ -43,8 +43,7 @@ void swapYp1Yp2(struct ypallhlos *, struct ypallhlos *);
 
 int n;
 void setTΜAll(struct ypallhlos [], int );
-
-
+void swapYpiYpi1(struct ypallhlos [], int, int );
 
 int main(int argc, char *argv[])
 {
@@ -142,11 +141,21 @@ int main(int argc, char *argv[])
      setTΜAll(yp,n);
 
     //emfanish pediwn yp[n]
-    emfanishPedion(yp);
-    for ( i=0; i<n ; i++)
+    
+    for ( i=0; i<n; i++ )
     {
-        printf("telikosMisthos = %lf\n", yp[i].tM);
-    }
+        printf("ypallhlos yp[%d] :\n",i);
+        emfanishPedion(yp[i]);
+        printf("Telikos Misthos = %lf\n",yp[i].tM); //to ekana etsi giati alliws h sinartish 
+    }                                              //tha evgaze lathos apotelesma gia thn askhsh 10.1
+
+    int index = rand()% n-1; //kanonika einai (n-2 -0 +1) +0 apla to ekana kateftheian
+
+    printf("Pinakas after Swap yp[%d] <--> yp[%d]",index,index+1); //swap yp[index],yp[index+1] me sinartish
+    swapYpiYpi1(yp,index,index+1);
+
+
+
 
 
 
@@ -239,12 +248,19 @@ void swapYp1Yp2(struct ypallhlos *yp1, struct ypallhlos *yp2) //antalassw times 
 
             //askhsh 10.2
 
-void setTΜAll(struct ypallhlos yp[], int n)
+void setTΜAll(struct ypallhlos yp[], int n) //gemizw pedio pinaka typou struct
 {
     int i;
     for ( i=0; i<n; i++ )
     {
         yp[i].tM = returnTMisthos(yp[i]);
     }
+}
 
+void swapYpiYpi1(struct ypallhlos yp[], int a, int b) //antallagh periexomena 2 ypallhlwn
+{
+    struct ypallhlos Yp;
+    Yp = yp[a];
+    yp[a] = yp[b];
+    yp[b] = Yp;
 }
