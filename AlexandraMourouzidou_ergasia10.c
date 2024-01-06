@@ -1,7 +1,7 @@
 /*MATHIMA: DOMHMENOSPROGRAMMATISMOS
 TMHMA: T10
 ERGASTHRIAKH ASKHSH: 10
-HMEROMHNIA: 6/1/2024
+HMEROMHNIA: 06/01/2024
 ONOMA: Mourouzidou Alexandra
 ARITHMOS MHTRWOY: 2023095
 */
@@ -44,6 +44,7 @@ void swapYp1Yp2(struct ypallhlos *, struct ypallhlos *);
 int n;
 void setTΜAll(struct ypallhlos [], int );
 void swapYpiYpi1(struct ypallhlos [], int, int );
+int returnThesiMaxTM(struct ypallhlos [], int );
 
 int main(int argc, char *argv[])
 {
@@ -151,13 +152,20 @@ int main(int argc, char *argv[])
 
     int index = rand()% n-1; //kanonika einai (n-2 -0 +1) +0 apla to ekana kateftheian
 
-    printf("Pinakas after Swap yp[%d] <--> yp[%d]",index,index+1); //swap yp[index],yp[index+1] me sinartish
+    printf("Pinakas after Swap yp[%d] <--> yp[%d]\n",index,index+1); //swap & emfanish yp[index],yp[index+1] me sinartish
     swapYpiYpi1(yp,index,index+1);
 
+    for ( i=0; i<n; i++ )
+    {
+        printf("ypallhlos yp[%d] :\n",i);
+        emfanishPedion(yp[i]);
+        printf("Telikos Misthos = %lf\n",yp[i].tM);
+    }
 
-
-
-
+    int thmax = returnThesiMaxTM(yp,n); //evresh kia emfanish thesi ypallhlou me max tM
+    printf("Pedia ypallhlou yp[%d] me maxTM :\n",thmax);
+    emfanishPedion(yp[thmax]);
+    printf("Telikos Misthos = %lf\n",yp[thmax].tM);
 
     system("PAUSE");	
     return 0;
@@ -168,10 +176,10 @@ int main(int argc, char *argv[])
 void emfanishPedion(struct ypallhlos yp)
 {
     printf("name : %s\n", yp.name);
-    printf("AM = %d\n", yp.aM);
+    printf("aM = %d\n", yp.aM);
     printf("Ptyxio = %d\n", yp.ptyxio);
     printf("Yperories = %d\n", yp.yperories);
-    printf("Vasikos misthos = %.2lf\n", yp.basikosMisthos);
+    printf("Vasikos misthos = %lf\n", yp.basikosMisthos);
 }
 
 void findTMisthos(struct ypallhlos yp) //ypologizw kai emfanizw teliko mistho
@@ -263,4 +271,21 @@ void swapYpiYpi1(struct ypallhlos yp[], int a, int b) //antallagh periexomena 2 
     Yp = yp[a];
     yp[a] = yp[b];
     yp[b] = Yp;
+}
+
+int returnThesiMaxTM(struct ypallhlos yp[], int n) //evresh thesi ypallhlou me max tM
+{
+    int i,thmax = 0;
+    double maxtM = yp[0].tM;
+
+    for ( i=1; i<n; i++ )
+    {
+        if (maxtM < yp[i].tM)
+        {
+            maxtM = yp[i].tM;
+            thmax = i;
+        }
+    }
+
+    return thmax;
 }
